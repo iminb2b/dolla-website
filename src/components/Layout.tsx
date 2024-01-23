@@ -13,6 +13,7 @@ const pageContent = css({
 const pageContainer = css({
   display: "flex",
   flexDirection: "column",
+  position: "relative",
 });
 
 const Layout: FC<{
@@ -20,7 +21,6 @@ const Layout: FC<{
 }> = memo(({ children }) => (
   <div css={pageContainer}>
     {/* <Global styles={globalStyles} /> */}
-    <Header toggle={""} />
 
     <div css={pageContent}>{children}</div>
 

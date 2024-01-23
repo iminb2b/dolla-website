@@ -1,23 +1,32 @@
-import HeroSection from "@/components/HeroSection";
-import InfoSection from "@/components/InfoSection";
-import { HomeInfo1, HomeInfo2, HomeInfo3 } from "@/components/InfoSectionData";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HomePage/HeroSection";
+import InfoSection from "@/components/HomePage/InfoSection";
+import {
+  HomeInfo1,
+  HomeInfo2,
+  HomeInfo3,
+} from "@/components/HomePage/InfoSectionData";
 import PageContainer from "@/components/PageContent";
-import Services from "@/components/Services";
+import Services from "@/components/HomePage/Services";
+import Sidebar from "@/components/SideBar";
 import { css } from "@emotion/react";
 import { NextPage } from "next";
-
-const container = css({
-  height: "100%",
-});
+import { useState } from "react";
 
 const HomePage: NextPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <PageContainer>
+      <Header toggle={toggle} />
+      <Sidebar isOpen={isOpen} toggle={toggle} />
       <HeroSection />
-      <InfoSection info={HomeInfo1} variant="light" />
-      <InfoSection info={HomeInfo2} variant="dark" />
+      <InfoSection info={HomeInfo1} variant="dark" />
+      <InfoSection info={HomeInfo2} variant="light" />
       <Services />
-      <InfoSection info={HomeInfo3} variant="dark" />
+      <InfoSection info={HomeInfo3} variant="light" />
     </PageContainer>
   );
 };

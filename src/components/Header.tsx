@@ -2,8 +2,9 @@ import { css } from "@emotion/react";
 import { FC, memo, useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Link, animateScroll as scroll } from "react-scroll";
+import ButtonLink from "./ButtonLink";
 
-export const nav = ({ scrollNav }: { scrollNav: boolean }) => css`
+const nav = ({ scrollNav }: { scrollNav: boolean }) => css`
   background: ${scrollNav ? "#000" : "transparent"};
   height: 80px;
   margin-top: -80px;
@@ -12,13 +13,10 @@ export const nav = ({ scrollNav }: { scrollNav: boolean }) => css`
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   transition: ease all 0.8s;
-  @media screen and (max-width: 960px) {
-    transition: ease all 0.8s;
-  }
 `;
-export const navbarContainer = css`
+const navbarContainer = css`
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -27,7 +25,7 @@ export const navbarContainer = css`
   max-width: 1100px;
   padding: 0 24px;
 `;
-export const navLogo = css`
+const navLogo = css`
   color: #fff;
   justify-self: flex-start;
   cursor: pointer;
@@ -38,7 +36,7 @@ export const navLogo = css`
   font-weight: bold;
   text-decoration: none;
 `;
-export const mobileIcon = css`
+const mobileIcon = css`
   display: none;
 
   @media screen and (max-width: 768px) {
@@ -52,7 +50,7 @@ export const mobileIcon = css`
     cursor: pointer;
   }
 `;
-export const navMenu = css`
+const navMenu = css`
   display: flex;
   align-items: center;
   list-style: none;
@@ -64,10 +62,10 @@ export const navMenu = css`
   }
 `;
 
-export const navItem = css`
+const navItem = css`
   height: 80px;
 `;
-export const navLinks = css`
+const navLinks = css`
   color: #fff;
   display: flex;
   align-items: center;
@@ -80,7 +78,7 @@ export const navLinks = css`
     border-bottom: 3px solid #01bf71;
   }
 `;
-export const navBtn = css`
+const navBtn = css`
   display: flex;
   align-items: center;
 
@@ -88,7 +86,7 @@ export const navBtn = css`
     display: none;
   }
 `;
-export const navBtnLink = css`
+const navBtnLink = css`
   border-radius: 50px;
   background-color: #01bf71;
   white-space: nowrap;
@@ -126,7 +124,7 @@ const Header: FC<{ toggle: any }> = memo(({ toggle }) => {
   return (
     <nav css={nav({ scrollNav })}>
       <div css={navbarContainer}>
-        <a href="/" onClick={scrollHome}>
+        <a href="/" onClick={scrollHome} css={navLogo}>
           dolla
         </a>
         <div css={mobileIcon} onClick={toggle}>
@@ -182,8 +180,10 @@ const Header: FC<{ toggle: any }> = memo(({ toggle }) => {
             </Link>
           </li>
         </ul>
-        <nav>
-          <a href="/signin">Sign In</a>
+        <nav css={navBtn}>
+          <a href={"/signin"} css={navBtnLink}>
+            Sign In
+          </a>
         </nav>
       </div>
     </nav>
