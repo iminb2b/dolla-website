@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 import { FC, memo, ReactNode } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
 // import globalStyles from "src/styles/globalStyles";
 
@@ -11,7 +13,6 @@ const pageContent = css({
 const pageContainer = css({
   display: "flex",
   flexDirection: "column",
-  minHeight: "100vh",
 });
 
 const Layout: FC<{
@@ -19,12 +20,11 @@ const Layout: FC<{
 }> = memo(({ children }) => (
   <div css={pageContainer}>
     {/* <Global styles={globalStyles} /> */}
-
-    {/* <Header /> */}
+    <Header toggle={""} />
 
     <div css={pageContent}>{children}</div>
 
-    {/* <Footer /> */}
+    <Footer />
   </div>
 ));
 
